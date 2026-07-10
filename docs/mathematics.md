@@ -552,7 +552,7 @@ Soft thresholding promotes sparsity:
 ```math
 \mathcal{S}_{\lambda}(a)
 =
-\operatorname{sign}(a)\max(|a|-\lambda,0).
+\mathrm{sgn}(a)\,\max\left(|a|-\lambda,0\right).
 ```
 
 The inverse transform returns the mixed latent field to physical space.
@@ -810,4 +810,3 @@ The complete project can be summarized as
 ```
 
 This equation chain is the central structure connecting the CFD and AI parts of the repository.
-

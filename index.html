@@ -1,120 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CFD + IAFNO Cleanroom Airflow Simulation</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evolution of cleanroom CFD, OpenFOAM, IAFNO prediction, and Lagrangian particle tracing.">
+  <title>CFD + IAFNO Cleanroom Project</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="hero">
-    <h1>CFD + IAFNO Cleanroom Airflow Simulation</h1>
-    <p>
-      A cleanroom airflow project combining OpenFOAM CFD, IAFNO neural operators,
-      and Lagrangian particle tracing.
-    </p>
+    <div class="hero-inner">
+      <p class="eyebrow">BRIAN HSIEH · CLEANROOM AIRFLOW RESEARCH</p>
+      <h1>From CFD prototypes to IAFNO prediction</h1>
+      <p class="lede">A numbered engineering record of airflow, temperature, humidity, CAD obstacles, OpenFOAM, and Lagrangian particle transport.</p>
+      <div class="actions">
+        <a class="button primary" href="docs/evolution.md">Cell-by-cell review</a>
+        <a class="button" href="docs/mathematics.md">Mathematics</a>
+        <a class="button" href="notebooks/">Browse notebooks</a>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Project Goal</h2>
-      <p>
-        This project builds a workflow for predicting cleanroom airflow and
-        particle transport. OpenFOAM is used to generate CFD velocity fields,
-        and an IAFNO model is trained as a faster surrogate model for predicting
-        future 3D airflow states.
-      </p>
+    <section class="intro">
+      <div>
+        <p class="kicker">Project objective</p>
+        <h2>Fast, physically meaningful cleanroom prediction</h2>
+      </div>
+      <p>OpenFOAM produces CFD fields, IAFNO learns future 3D states, and Lagrangian particles reveal how contamination may move through the predicted airflow. Earlier Python notebooks preserve the learning path that led to the OpenFOAM and AI workflow.</p>
     </section>
 
     <section>
-      <h2>Workflow</h2>
-      <ol>
-        <li>Generate cleanroom CFD data using OpenFOAM.</li>
-        <li>Export the 3D velocity field into NumPy or PyTorch format.</li>
-        <li>Train an IAFNO model to predict future velocity fields.</li>
-        <li>Trace Lagrangian particles through the predicted airflow.</li>
-        <li>Add a particle-energy loss to reduce unrealistic particle motion.</li>
-        <li>Visualize airflow, particles, and CAD obstacles.</li>
-      </ol>
+      <p class="kicker">Evolution</p>
+      <h2>Numbered development timeline</h2>
+      <div class="timeline">
+        <article><span>CFD1–3</span><h3>Eulerian foundations</h3><p>2D velocity, absolute humidity, and temperature transport.</p><b>Python prototype</b></article>
+        <article><span>CFD4–5</span><h3>Particle transport</h3><p>Inertial Lagrangian particles, deposition, and revised cleanroom geometry.</p><b>Python prototype</b></article>
+        <article><span>CFD6–7A</span><h3>3D and CAD</h3><p>3D fields, moving body, PyVista, and CAD converted into a Cartesian solid mask.</p><b>Python prototype</b></article>
+        <article><span>CFD7B–8</span><h3>Actual OpenFOAM</h3><p>Case generation, optional snappyHexMesh CAD, calculated-field reading, and particles.</p><b class="foam">OpenFOAM</b></article>
+        <article class="deferred"><span>CFD9</span><h3>BCM comparison</h3><p>Planned conventional-mesh versus Building-Cube Method study, deferred to prioritize the first AI predictor.</p><b>Planned</b></article>
+        <article><span>CFD10</span><h3>First AI application</h3><p>U/p export, 3D IAFNO increment learning, physics losses, 10× rollout, and particles.</p><b class="ai">IAFNO</b></article>
+        <article><span>CFD11</span><h3>Temperature returns</h3><p>OpenFOAM U/p/T/passive-H followed by U/p/T IAFNO temperature animation.</p><b class="ai">IAFNO experiment</b></article>
+        <article><span>CFD12</span><h3>Real Zone 01 geometry</h3><p>DXF-derived cleanroom, FFU boundaries, U/p/T/H export, IAFNO, and particles.</p><b class="latest">Latest branch</b></article>
+      </div>
     </section>
 
     <section>
-      <h2>CFD Field</h2>
-      <p>The main simulated quantity is the 3D velocity field:</p>
-      <pre><code>u(x, y, z, t) = (u, v, w)</code></pre>
-      <p>
-        Temperature and humidity fields were removed from the current model
-        because the project now focuses on velocity prediction and particle motion.
-      </p>
+      <p class="kicker">Recovered outputs</p>
+      <h2>Simulation and prediction animations</h2>
+      <p class="note">Animations are labeled by their computational source. Large GIFs are lazy-loaded to reduce initial page cost.</p>
+      <div class="gallery">
+        <figure><img loading="lazy" src="assets/gifs/CFD08-humidity-yz-slice.gif" alt="CFD8 humidity yz slice"><figcaption><strong>CFD8</strong> Humidity y–z visualization</figcaption></figure>
+        <figure><img loading="lazy" src="assets/gifs/CFD08-openfoam-particles-cad-collision.gif" alt="CFD8 OpenFOAM particles and CAD"><figcaption><strong>CFD8</strong> OpenFOAM particles with CAD collision</figcaption></figure>
+        <figure><img loading="lazy" src="assets/gifs/CFD10-iafno-particles-10x.gif" alt="CFD10 IAFNO particle rollout"><figcaption><strong>CFD10</strong> First IAFNO 10× particle rollout</figcaption></figure>
+        <figure><img loading="lazy" src="assets/gifs/CFD11-iafno-temperature-UPT-xz.gif" alt="CFD11 IAFNO temperature"><figcaption><strong>CFD11</strong> U/p/T IAFNO temperature</figcaption></figure>
+        <figure><img loading="lazy" src="assets/gifs/CFD12-zone01-temperature-UPT-xz.gif" alt="CFD12 Zone 01 temperature"><figcaption><strong>CFD12</strong> Zone 01 temperature prediction</figcaption></figure>
+        <figure><img loading="lazy" src="assets/gifs/CFD12-zone01-particles-UPT.gif" alt="CFD12 Zone 01 particles"><figcaption><strong>CFD12</strong> Zone 01 particle prediction</figcaption></figure>
+      </div>
     </section>
 
-    <section>
-      <h2>IAFNO Model</h2>
-      <p>
-        IAFNO learns a field-to-field mapping. Instead of predicting one point,
-        it predicts the next full 3D velocity field from the previous field.
-      </p>
-      <pre><code>u_t → u_{t+1}</code></pre>
-    </section>
-
-    <section>
-      <h2>Lagrangian Particles</h2>
-      <p>
-        Particles are tracked by directly updating their positions according to
-        the local airflow velocity:
-      </p>
-      <pre><code>dx_p/dt = u(x_p, t)</code></pre>
-      <p>
-        This allows the simulation to study how contamination particles move
-        inside the cleanroom.
-      </p>
-    </section>
-
-    <section>
-      <h2>Loss Function</h2>
-      <p>
-        The model uses a velocity-field prediction loss plus a particle-energy
-        constraint:
-      </p>
-      <pre><code>L_total = L_field + lambda_E L_energy + lambda_s L_smooth</code></pre>
-      <p>
-        The energy loss helps reduce unrealistic particle wiggle and unstable
-        particle acceleration.
-      </p>
-    </section>
-
-    <section>
-      <h2>Resolution and Particles</h2>
-      <p>
-        The target setup uses a 42 × 42 × 42 grid and 50 particles. Higher
-        resolution gives more spatial detail, but it also increases memory usage
-        and may cause the kernel to crash.
-      </p>
-    </section>
-
-    <section>
-      <h2>Obstacle and CAD</h2>
-      <p>
-        CAD geometry can be imported for visualization and obstacle handling.
-        To prevent particles from passing through objects, the particle tracer
-        must include obstacle collision checking or an obstacle mask.
-      </p>
-    </section>
-
-    <section>
-      <h2>Code Included</h2>
-      <ul>
-        <li><code>iafno_model.py</code> — simplified IAFNO model</li>
-        <li><code>particle_lagrangian_loss.py</code> — particle-energy loss</li>
-        <li><code>train_iafno.py</code> — training loop</li>
-        <li><code>openfoam_export_pipeline.py</code> — OpenFOAM export placeholder</li>
-        <li><code>particle_tracing.py</code> — Lagrangian particle advection</li>
-      </ul>
+    <section class="split">
+      <div><p class="kicker">Model</p><h2>Five states in, one increment out</h2><pre>[qᵐ … qᵐ⁺⁴] → Δqᵐ⁺⁵</pre><p>The learned increment is added to the latest state and used autoregressively for longer rollouts.</p></div>
+      <div><p class="kicker">Scientific scope</p><h2>What the project does not claim</h2><ul><li>Python prototypes are not OpenFOAM results.</li><li>Humidity is not yet part of saved IAFNO training.</li><li>CFD12 still lacks the requested BC/IC loss.</li><li>Experimental and mesh-independence validation remain future work.</li></ul></div>
     </section>
   </main>
 
-  <footer>
-    <p>Created by Brian Hsieh · ASE Brian Cleanroom Project</p>
-  </footer>
+  <footer><p>CFD + IAFNO Cleanroom Airflow Simulation · Brian Hsieh</p><a href="README.md">Project README</a></footer>
 </body>
 </html>

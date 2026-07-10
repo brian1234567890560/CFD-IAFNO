@@ -31,6 +31,7 @@ CFD9 was intentionally postponed when project time became limited. Delivering th
 - [`assets/gifs`](assets/gifs) — six animations recovered from notebook outputs.
 - [`docs/evolution.md`](docs/evolution.md) — complete archive inventory, duplicate analysis, scientific cautions, and cell-by-cell explanation.
 - [`docs/mathematics.md`](docs/mathematics.md) — LaTeX explanation of the CFD equations, discretization, OpenFOAM structure, particle mechanics, AFNO/IAFNO, rollout, and training losses.
+- [`docs/animations.md`](docs/animations.md) — dedicated gallery for the recovered CFD and IAFNO GIFs.
 - [`code`](code) — smaller reusable examples for OpenFOAM export, IAFNO, losses, training, and particle tracing.
 - [`index.html`](index.html) — GitHub Pages project presentation.
 
@@ -46,57 +47,10 @@ The two archives contained 16 notebook files but only 11 unique notebooks. Ident
 6. Trace Lagrangian particles through CFD or predicted velocity fields.
 7. Visualize temperature, humidity, CAD collision, and particle transport.
 
-## Mathematical model
+## Detailed references
 
-> **Full reference:** [Mathematics and Model Structure](docs/mathematics.md) explains every main equation in rendered LaTeX and connects each term to the notebook implementation.
-
-For incompressible airflow,
-
-```math
-\nabla\cdot\mathbf{u}=0,
-\qquad
-\frac{\partial\mathbf{u}}{\partial t}
-+(\mathbf{u}\cdot\nabla)\mathbf{u}
-=-\frac{1}{\rho}\nabla p+\nu\nabla^2\mathbf{u}.
-```
-
-Temperature or humidity uses an Eulerian advection–diffusion equation,
-
-```math
-\frac{\partial\phi}{\partial t}+\mathbf{u}\cdot\nabla\phi
-=\alpha_\phi\nabla^2\phi+S_\phi.
-```
-
-The IAFNO stage receives five previous states and predicts an increment,
-
-```math
-[q^m,\ldots,q^{m+4}]\longmapsto
-\Delta q^{m+5}=q^{m+5}-q^{m+4}.
-```
-
-Training combines field error with selected physical constraints such as divergence, zero velocity in solids, and Lagrangian particle-energy behavior.
-
-## Recovered animations
-
-### CFD8 — OpenFOAM baseline
-
-![CFD8 humidity y-z slice](assets/gifs/CFD08-humidity-yz-slice.gif)
-
-![CFD8 particles with CAD collision](assets/gifs/CFD08-openfoam-particles-cad-collision.gif)
-
-### CFD10 — first IAFNO particle rollout
-
-![CFD10 IAFNO particles](assets/gifs/CFD10-iafno-particles-10x.gif)
-
-### CFD11 — IAFNO temperature
-
-![CFD11 IAFNO temperature](assets/gifs/CFD11-iafno-temperature-UPT-xz.gif)
-
-### CFD12 — Zone 01
-
-![CFD12 Zone 01 temperature](assets/gifs/CFD12-zone01-temperature-UPT-xz.gif)
-
-![CFD12 Zone 01 particles](assets/gifs/CFD12-zone01-particles-UPT.gif)
+- Read [Mathematics and Model Structure](docs/mathematics.md) for the complete rendered-LaTeX formulation.
+- Open the [Animation Gallery](docs/animations.md) for all recovered CFD and IAFNO GIFs.
 
 ## Environment distinction
 

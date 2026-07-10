@@ -30,6 +30,7 @@ CFD9 was intentionally postponed when project time became limited. Delivering th
 - [`notebooks/openfoam-iafno`](notebooks/openfoam-iafno) — CFD7B, CFD8, CFD10, CFD11, and CFD12.
 - [`assets/gifs`](assets/gifs) — six animations recovered from notebook outputs.
 - [`docs/evolution.md`](docs/evolution.md) — complete archive inventory, duplicate analysis, scientific cautions, and cell-by-cell explanation.
+- [`docs/mathematics.md`](docs/mathematics.md) — LaTeX explanation of the CFD equations, discretization, OpenFOAM structure, particle mechanics, AFNO/IAFNO, rollout, and training losses.
 - [`code`](code) — smaller reusable examples for OpenFOAM export, IAFNO, losses, training, and particle tracing.
 - [`index.html`](index.html) — GitHub Pages project presentation.
 
@@ -46,6 +47,8 @@ The two archives contained 16 notebook files but only 11 unique notebooks. Ident
 7. Visualize temperature, humidity, CAD collision, and particle transport.
 
 ## Mathematical model
+
+> **Full reference:** [Mathematics and Model Structure](docs/mathematics.md) explains every main equation in rendered LaTeX and connects each term to the notebook implementation.
 
 For incompressible airflow,
 
@@ -119,4 +122,3 @@ python -m notebook --notebook-dir="$HOME/openfoam_notebooks"
 ## Current direction
 
 CFD12 is the latest development branch, not a claim of a fully validated final solver. The next major tasks are BC/IC-loss implementation, modularizing the large DXF/OpenFOAM cells, quantitative CFD-versus-IAFNO validation, and eventually returning to the deferred CFD8-versus-BCM comparison.
-
